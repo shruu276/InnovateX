@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Custom scrollbar ── */
+:root {
+  --scrollbar-track: #f1f5f9;
+  --scrollbar-thumb: #cbd5e1;
+}
+.dark {
+  --scrollbar-track: #1e2330;
+  --scrollbar-thumb: #334155;
+}
+::-webkit-scrollbar        { width: 6px; height: 6px; }
+::-webkit-scrollbar-track  { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb  { background: var(--scrollbar-thumb); border-radius: 3px; }
+
+/* ── Smooth scroll ── */
+html { scroll-behavior: smooth; }
+
+/* ── Selection colour ── */
+::selection { background: rgba(59, 130, 212, 0.25); color: inherit; }
+
+/* ── Focus-visible ring ── */
+:focus-visible {
+  outline: 2px solid #3B82D4;
+  outline-offset: 2px;
+}
+
+/* ── Gradient text helper ── */
+.gradient-text {
+  background: linear-gradient(135deg, #3B82D4 0%, #7C5CD8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Hero grid overlay ── */
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ── Marquee track ── */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Float animation ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+.animate-float { animation: float 4s ease-in-out infinite; }
+
+/* ── Typing cursor blink ── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.cursor-blink::after {
+  content: "|";
+  animation: blink 1s step-start infinite;
+  margin-left: 2px;
+  color: #3B82D4;
+}
+
+/* ── Feature card hover accent ── */
+.feature-card {
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+.feature-card:hover {
+  border-color: #3B82D4;
+  box-shadow: 0 8px 32px rgba(59, 130, 212, 0.12);
+  transform: translateY(-2px);
+}
